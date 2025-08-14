@@ -10,6 +10,6 @@ MARRON="\33[38;5;138m"
 NEGRO="\33[0;30m"
 
 neofetch
-echo -n "${AMARILLO}"
-echo "PULSA ENTER PARA CERRAR"
+echo -n "${BLANCO}"
+echo "            PULSA ENTER PARA CERRAR"
 read a
