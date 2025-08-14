@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=actualizar
+Comment=EA3EIZ MMDVM Image
+Exec=sh -c 'cd /home/pi/A108;sudo sh cerrar_abrir_paneles.sh'
+Type=Application
+Terminal=false
+Name[es_ES]=actualizar
