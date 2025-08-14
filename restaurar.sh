@@ -8,7 +8,7 @@ cd /home/pi/.local/COPIA_SEGURIDAD
 tar -xvzf Copia_A108.zip
 
 sudo rm Copia_A108.zip
-echo "\33[1;32m" #color verde 
+echo "\33[1;32m" #color verde  
 echo "***************************************************"
 echo "* ESTAS RESTAURANDO UNA COPIA DE LA MISMA VERSIÓN *"
 echo "*      DEL MMDVMHOST QUE TIENES ACTUALIZADO       *"
