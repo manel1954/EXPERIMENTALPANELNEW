@@ -5,7 +5,7 @@ ES-EA-Distrito-5            21405             EA-Distrito-5               212.22
 ES-EA-Distrito-6            21406             EA-Distrito-6               212.227.87.198  42006   000
 ES-YSF214                   21410             YSF-214                     212.227.87.198  42014   000
 ES-LEON                     21424             C4FM-LEON                   148.135.96.174  42009   000
-ES-RONDA;                   21429             SERRANIA-RONDA              213.186.33.5    42010   000
+ES-RONDA                    21429             SERRANIA-RONDA              213.186.33.5    42010   000
 ES-EA-Distrito-1            21441             EA-Distrito-1               212.227.87.198  42000   000
 ES-EA-Distrito-2            21442             EA-Distrito-2               212.227.87.198  42002   000
 ES-BADAJOZ                  21444             BADAJOZ                     51.75.140.10    42000   000
