@@ -18,3 +18,4 @@ ES-EA-C4FM-Spain            22401             (YCS224)                    212.23
 ES-EA-Distrito-7            22047             EA-Distrito-7               212.227.87.198  42007   000
 ES-EA-Distrito-4            62980             YSF Distrito 4              212.237.0.67    42000   000
 ES-ALCOYANOS                58511             ALCOYANOS                   82.223.204.29.  42395   000
+XX-EUROPELINK               00007             Europelink                  161.97.73.43    42000.  000
