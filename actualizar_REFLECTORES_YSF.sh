@@ -23,3 +23,4 @@ MARRON="\33[38;5;138m"
 			cd /home/pi/A108
 			cp YSFGateway.ini /home/pi/YSFClients/YSFGateway
 
+
