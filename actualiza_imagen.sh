@@ -19,6 +19,9 @@ sed -i "2c $fecha_formateada" /home/pi/version-fecha-actualizacion
                         sudo cp -R /home/pi/A108/esp32 /home/pi/
                         sudo chmod 777 -R /home/pi/esp32
 
+                        cd /home/pi/A108
+                        cp -R paneles_virtuales_nextion /var/www/html
+
                  
 
 
