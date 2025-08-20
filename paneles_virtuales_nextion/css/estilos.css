@@ -1,0 +1,172 @@
+body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #0f0;
+            padding: 1em;
+            text-align: center;
+        }
+/* Enlace no visitado */
+/* a:link {
+  color: #f00;
+  text-decoration: none;
+} */
+
+/* Enlace visitado */
+/* a:visited {
+  color: #800080;
+} */
+
+/* Ratón encima */
+a:hover {
+
+}
+
+/* Foco (teclado, clic, etc) */
+
+
+/* Enlace activo (clic presionado) */
+a:active {
+  color: #ffffff;
+  background: rgb(98, 46, 46);
+}
+        .parametros {
+            color:#ffffff;
+            text-align: left;
+            padding-left:300px;
+        }
+        h1 {
+            color: #0ff;
+        }
+        .btn {
+            display: block;
+            padding: 15px;
+            margin: 10px auto;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .btn-id {
+            background-color: #4caf50;
+            color: white;
+        }
+        .btn-tg {
+            background-color: #2196f3;
+            color: white;
+        }
+        .btn-callsign {
+            background-color: #a90404;
+            color: #FFFFFF;
+            border: 2px solid #fff;
+            height:80px;
+            font-size:40px;
+            padding-top:10px;
+        }
+        .btn-name {
+            background-color: #ff9800;
+            color: white;
+        }
+        .btn-time {
+            background-color: #9c27b0;
+            color: white;
+        }
+        .btn-ber {
+            background-color: #f44336;
+            color: white;
+        }
+        .no-talk {
+            color: #f00;
+            font-size: 2em;
+            margin-top: 30px;
+        }
+        .hora {
+            color: #ffffff;
+            font-size: 70px;
+            margin-top: 20px;
+        }
+        .ultimos {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+.ultimos table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+}
+.ultimos th {
+    background-color: #333;
+    color: white;
+}
+.ultimos td, .ultimos th {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.color_font_Bebas_azul{
+    color:rgb(59, 138, 242);
+    font-size:40px;
+    font-weight:bold;
+    letter-spacing: 0.1px;
+    font-family: 'Bebas Neue';
+}
+.color_font_Bebas_naranja{
+    color:orange;
+    font-size:40px;
+    font-weight:bold;
+    letter-spacing: 0.1px;
+    font-family: 'Bebas Neue';
+}
+.color_font_Bebas_amarillo{
+    color:yellow;
+    font-size:60px;
+    font-weight:bold;
+    letter-spacing: 0.1px;
+    font-family: 'Bebas Neue';
+}
+.color_font_Bebas_radio{
+    color:rgb(0, 162, 255);
+    font-size:60px;
+    font-weight:bold;
+    letter-spacing: 0.1px;
+    font-family: 'Bebas Neue';
+}
+
+.id, .indicativo, .rx, .tx {
+  display: inline-block;
+  background-color: orange;
+  min-height: 30px;
+  width: 100%;
+  max-width: 200px;
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  border-radius: 2px;
+  padding: 4px 0 0 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Personalización de colores */
+.indicativo, .tx {
+  background-color: green;
+}
+
+/* Personalización de font */
+.rx, .tx {
+  font-size: 12px;
+}
+
+/* Alineación centrada y separación */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Espaciado entre filas */
+.row-block {
+  margin-bottom: 15px;
+}
