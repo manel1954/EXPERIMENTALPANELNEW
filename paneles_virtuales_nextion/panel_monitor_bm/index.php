@@ -96,133 +96,46 @@ function leerLineaINI($ruta, $lineaDeseada, $etiqueta) {
 
 <!-- Contenedor dinámico -->
 <div id="contenido">
-    <?php include 'contenidoBM.php'; ?>
+    <?php include 'muestra_monitor_nextion_bm.php'; ?>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-
-
-<!-- Actualización AJAX -->
-<script>
-function actualizarContenido() {
-    fetch('muestra_monitor_nextion_bm.php')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('contenido').innerHTML = data;
-        })
-        .catch(error => console.error('Error al actualizar contenido:', error));
-}
-
-setInterval(actualizarContenido, 1000); // cada 3 segundos
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Sección de Últimos 10 Escuchados - MMDVM BM (RF) -->
-<div class="container mt-5">
-  <div class="col-6 offset-3">
-    <h3 class="text-center color_font_Bebas_azul">ÚLTIMOS 10 ESCUCHADOS - BM (RF)</h3>
-    <div class="table-responsive">
-      <table class="table table-dark table-striped table-hover align-middle text-center">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Fecha y Hora</th>
-            <th>Call</th>
-            <th>ID</th>
-            <th>TG</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $fechaHoy = date('Y-m-d');
-          $archivoLog = "/var/log/mmdvm/MMDVMBM-{$fechaHoy}.log"; // Cambia si tu log se llama distinto
-
-          $entradas = [];
-
-          if (file_exists($archivoLog)) {
-              $lineas = file($archivoLog, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-              // Recorremos desde el final hacia arriba (más recientes primero)
-              for ($i = count($lineas) - 1; $i >= 0; $i--) {
-                  $linea = $lineas[$i];
-
-                  // ✅ Buscamos INICIO de transmisión por RF (lo más temprano y fiable)
-                  if (preg_match(
-                      '/M:\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2}\.\d{3}).*received RF voice header from\s+([A-Z0-9]+)\s+to TG (\d+)/',
-                      $linea,
-                      $matches
-                  )) {
-                      $fecha = $matches[1];
-                      $hora = substr($matches[2], 0, -4); // sin milis
-                      $callsign = $matches[3];
-                      $tg = $matches[4];
-                      $timestamp = "$fecha $hora";
-                      $id = "—"; // por defecto
-
-                      // 🔎 Buscar ID en las líneas previas (FindWithName)
-                      // Buscamos hasta 10 líneas antes
-                      for ($j = $i - 1; $j >= max(0, $i - 10); $j--) {
-                          $lineaAnterior = $lineas[$j];
-
-                          // Caso: FindWithName =CALL ID (ej: =EA3EIZ 213456789)
-                          if (preg_match('/FindWithName\s+=' . preg_quote($callsign) . '\s+(\d+)/', $lineaAnterior, $idMatch)) {
-                              $id = $idMatch[1];
-                              break;
-                          }
-
-                          // Caso: FindWithName =CALL Nombre (ej: =EA3EIZ Manel) → no hay ID
-                          // No hacemos nada, ID sigue siendo "—"
-                      }
-
-                      // Evitar duplicados consecutivos del mismo callsign
-                      if (empty($entradas) || $entradas[count($entradas) - 1]['callsign'] != $callsign) {
-                          $entradas[] = [
-                              'fecha' => $timestamp,
-                              'callsign' => $callsign,
-                              'id' => $id,
-                              'tg' => $tg
-                          ];
-                      }
-
-                      // Salimos cuando tengamos 10
-                      if (count($entradas) >= 10) break;
-                  }
-              }
-          } else {
-              echo "<tr><td colspan='5'>Log no encontrado: $archivoLog</td></tr>";
-          }
-
-          // Mostrar resultados
-          if (empty($entradas)) {
-              echo "<tr><td colspan='5'>No hay actividad RF reciente</td></tr>";
-          } else {
-              foreach ($entradas as $index => $entrada) {
-                  echo "<tr>
-                          <td>" . ($index + 1) . "</td>
-                          <td>{$entrada['fecha']}</td>
-                          <td><strong>{$entrada['callsign']}</strong></td>
-                          <td>{$entrada['id']}</td>
-                          <td>TG {$entrada['tg']}</td>
-                        </tr>";
-              }
-          }
-          ?>
-        </tbody>
-      </table>
+    <!-- Sección de Últimos 10 Escuchados - Centrada -->
+    <div class="container mt-5">
+      <div class="col-6 offset-3">
+        <h3 class="text-center color_font_Bebas_azul">ÚLTIMOS 10 ESCUCHADOS - DMR+</h3>
+        <div id="ultimos-escuchados">
+          <?php include 'ultimos_escuchados.php'; ?>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Actualización AJAX -->
+    <script>
+    function actualizarContenido() {
+        fetch('muestra_monitor_nextion_bm.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('contenido').innerHTML = data;
+            })
+            .catch(error => console.error('Error al actualizar contenido:', error));
+    }
+
+    function actualizarUltimos() {
+        fetch('ultimos_escuchados.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('ultimos-escuchados').innerHTML = data;
+            })
+            .catch(error => console.error('Error al actualizar últimos escuchados:', error));
+    }
+
+    // refrescar cada 3 segundos
+    setInterval(actualizarContenido, 3000);
+    setInterval(actualizarUltimos, 3000);
+    </script>
 
 
 
